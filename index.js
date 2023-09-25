@@ -1,17 +1,14 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
-// Define your GraphQL schema using SDL (Schema Definition Language)
-const typeDefs = `
-  type Query {
-    hello: String
-  }
-`;
+// Import TypeDefs
+import { typeDefs } from "./schema.js";
+
 
 // Define your resolvers
 const resolvers = {
   Query: {
-    hello: () => "Hello, world!",
+    reviews: () => "Hello, world!",
   },
 };
 
