@@ -1,14 +1,20 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { mongoose } from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
+const DB = process.env.DATABASE;
 
 // Import TypeDefs
 import { typeDefs } from "./schema.js";
 
-
 // Define your resolvers
 const resolvers = {
   Query: {
-    reviews: () => "Hello, world!",
+    reviews() {
+      return "hello world";
+    },
   },
 };
 
@@ -24,3 +30,12 @@ const { url } = await startStandaloneServer(server, {
 });
 
 console.log("Server started at", url);
+
+mongoose
+  .connect(DB)
+  .then(() => {
+    console.log("Mongo Connected for Reviews DB");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
