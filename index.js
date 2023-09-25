@@ -2,7 +2,7 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { mongoose } from "mongoose";
 import dotenv from "dotenv";
-
+import ReviewModel from "./model/reviewModel.js";
 dotenv.config();
 const DB = process.env.DATABASE;
 
@@ -11,12 +11,19 @@ import { typeDefs } from "./schema.js";
 
 // Define your resolvers
 const resolvers = {
-  Query: {
-    reviews() {
-      return "hello world";
+    Query: {
+      async reviews() {
+        try {
+          const reviews = await ReviewModel.find();
+          console.log(reviews);
+          return reviews;
+        } catch (error) {
+          throw new Error("Failed to fetch reviews");
+        }
+      },
     },
-  },
-};
+  };
+  
 
 // Create an ApolloServer instance with your schema and resolvers
 const server = new ApolloServer({

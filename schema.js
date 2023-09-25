@@ -1,6 +1,5 @@
 export const typeDefs = `#graphql
 type Review{
-  _id: ID,
   listing_url: String,
   name: String,
   summary: String,
