@@ -11,19 +11,17 @@ import { typeDefs } from "./schema.js";
 
 // Define your resolvers
 const resolvers = {
-    Query: {
-      async reviews() {
-        try {
-          const reviews = await ReviewModel.find();
-          console.log(reviews);
-          return reviews;
-        } catch (error) {
-          throw new Error("Failed to fetch reviews");
-        }
-      },
+  Query: {
+    async reviews() {
+      try {
+        const reviews = await ReviewModel.find()
+        return reviews
+      } catch (error) {
+        console.log(error);
+      }
     },
-  };
-  
+  },
+};
 
 // Create an ApolloServer instance with your schema and resolvers
 const server = new ApolloServer({
