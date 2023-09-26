@@ -22,5 +22,7 @@ type Review{
 type Query {
     reviews: [Review!]
     review(id:ID!): Review
+    deleteReview(id:ID!): Review
+
 }
 `;

@@ -16,11 +16,15 @@ const resolvers = {
       const reviews = await ReviewModel.find();
       return reviews;
     },
-    async review(_, args){
+    async review(_, args) {
       const review = await ReviewModel.findById(args.id);
       return review;
+    },
+    async deleteReview(_, args) {
+      const deletedReview = await ReviewModel.findByIdAndDelete(args.id)
+      return deletedReview
     }
-  },
+  }
 }
 
 
