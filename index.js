@@ -13,15 +13,20 @@ import { typeDefs } from "./schema.js";
 const resolvers = {
   Query: {
     async reviews() {
-      try {
-        const reviews = await ReviewModel.find()
-        return reviews
-      } catch (error) {
-        console.log(error);
-      }
+      const reviews = await ReviewModel.find();
+      return reviews;
     },
-  },
-};
+    async review(_, args) {
+      const review = await ReviewModel.findById(args.id);
+      return review;
+    },
+    async deleteReview(_, args) {
+      const deletedReview = await ReviewModel.findByIdAndDelete(args.id)
+      return deletedReview
+    }
+  }
+}
+
 
 // Create an ApolloServer instance with your schema and resolvers
 const server = new ApolloServer({
@@ -31,7 +36,7 @@ const server = new ApolloServer({
 
 // Start the standalone server
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 8000 },
+  listen: { port: 5800 },
 });
 
 console.log("Server started at", url);
