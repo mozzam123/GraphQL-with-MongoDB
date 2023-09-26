@@ -1,5 +1,6 @@
 export const typeDefs = `#graphql
 type Review{
+  _id: ID!,
   listing_url: String,
   name: String,
   summary: String,
@@ -19,6 +20,7 @@ type Review{
   cancellation_policy:String,
 }
 type Query {
-    reviews: [Review]
+    reviews: [Review!]
+    review(id:ID!): Review
 }
 `;
