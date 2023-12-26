@@ -1,4 +1,4 @@
-# GraphQL Node.js Project
+# Reviews API
 
 This is a GraphQL Node.js project that implements a simple API for managing reviews of listings. It allows you to perform CRUD (Create, Read, Update, Delete) operations on reviews.
 
@@ -27,7 +27,7 @@ Before you start, ensure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/mozzam123/BreadcrumbsReviews-API-with-GraphQL-and-MongoDB.git
    cd your-repo-name
 
 ## Usage
